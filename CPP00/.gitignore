@@ -1,0 +1,5 @@
+*.o
+.vscode/
+ex00/megaphone
+ex01/awesome_phonebook
+fill.py
