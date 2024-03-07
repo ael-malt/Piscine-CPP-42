@@ -14,7 +14,8 @@ SRCS		= main.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
-INCLUDES	= Zombie.hpp
+INCLUDES	= Zombie.hpp \
+			Colors.hpp
 
 all: $(NAME)
 
