@@ -5,11 +5,6 @@ using	std::string;
 using	std::cout;
 using	std::endl;
 
-Zombie::Zombie(string name)
-{
-	this->name = name;
-}
-
 Zombie::~Zombie(void)
 {
 	cout << this->name << " Was destroyed" << endl;
@@ -18,4 +13,10 @@ Zombie::~Zombie(void)
 void	Zombie::announce(void)
 {
 	cout << this->name << ":  BraiiiiiiinnnzzzZ..." << endl;
+}
+
+
+void	Zombie::setName(string name)
+{
+	this->name = name;
 }
