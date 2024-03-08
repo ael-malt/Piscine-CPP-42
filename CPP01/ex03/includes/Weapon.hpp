@@ -8,20 +8,12 @@ class Weapon
 {
 private:
 	string	type;
+
 public:
-	Weapon(void);
+	Weapon(string new_type);
 	~Weapon(void);
-	const string	getType(void);
-	void 			setType(string new_type);
+	const string	&getType(void);
+	void			setType(string new_type);
 };
-
-Weapon::Weapon(void)
-{
-}
-
-Weapon::~Weapon()
-{
-}
-
 
 #endif

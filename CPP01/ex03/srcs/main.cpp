@@ -1,23 +1,30 @@
 #include "../includes/Colors.hpp"
+#include "../includes/Weapon.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
+
 #include <iostream>
 
 using std::string;
 using std::cout;
 using std::endl;
 
-int main(void)
+int main()
 {
-	string	brain = "HI THIS IS BRAIN";
-	string	*stringPTR = &brain;
-	string	&stringREF = brain;
-
-	cout << GREEN << "Memory address: " << DEFAULT << endl;
-	cout << RED << "String: " << DEFAULT << &brain << endl;
-	cout << RED << "StringPTR: " << DEFAULT << stringPTR << endl;
-	cout << RED << "StringREF: " << DEFAULT << &stringREF << endl;
-
-	cout << GREEN << "Value: " << DEFAULT << endl;
-	cout << RED << "String: " << DEFAULT << brain << endl;
-	cout << RED << "StringPTR: " << DEFAULT << *stringPTR << endl;
-	cout << RED << "StringREF: " << DEFAULT << stringREF << endl;
+{
+	Weapon club = Weapon("crude spiked club");
+	HumanA bob("Bob", club);
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
+	}
+	{
+	Weapon club = Weapon("crude spiked club");
+	HumanB jim("Jim");
+	jim.setWeapon(club);
+	jim.attack();
+	club.setType("some other type of club");
+	jim.attack();
+	}
+	return 0;
 }
