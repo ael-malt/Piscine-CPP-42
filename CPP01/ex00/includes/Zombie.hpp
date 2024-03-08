@@ -1,6 +1,7 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
+#include "../includes/Colors.hpp"
 #include <iostream>
 
 using std::string;

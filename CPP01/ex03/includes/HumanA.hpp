@@ -12,7 +12,6 @@ private:
 	string	name;
 	Weapon	&weapon;
 public:
-	HumanA(Weapon &new_weapon);
 	HumanA(string new_name, Weapon &new_weapon);
 	~HumanA();
 	void	attack();

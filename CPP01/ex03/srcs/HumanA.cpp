@@ -2,14 +2,7 @@
 
 using	std::string;
 
-HumanA::HumanA(Weapon &new_weapon)
-{
-	weapon = new_weapon;
-}
-HumanA::HumanA(string new_name, Weapon &new_weapon)
-{
-
-}
+HumanA::HumanA(string new_name, Weapon &new_weapon) : name(new_name), (new_weapon) {}
 
 HumanA::~HumanA()
 {

@@ -7,12 +7,12 @@ using	std::endl;
 
 Zombie::~Zombie(void)
 {
-	cout << this->name << " Was destroyed" << endl;
+	cout << RED << this->name << " Was destroyed" << DEFAULT << endl;
 }
 
 void	Zombie::announce(void)
 {
-	cout << this->name << ":  BraiiiiiiinnnzzzZ..." << endl;
+	cout << GREEN << this->name << ":  BraiiiiiiinnnzzzZ..." << DEFAULT << endl;
 }
 
 

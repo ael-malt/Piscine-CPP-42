@@ -1,4 +1,5 @@
 #include "../includes/Zombie.hpp"
+
 #include <iostream>
 
 using	std::string;
@@ -12,10 +13,10 @@ Zombie::Zombie(string name)
 
 Zombie::~Zombie(void)
 {
-	cout << this->name << " Was destroyed" << endl;
+	cout << RED << this->name << " Was destroyed" << DEFAULT << endl;
 }
 
 void	Zombie::announce(void)
 {
-	cout << this->name << ":  BraiiiiiiinnnzzzZ..." << endl;
+	cout << GREEN << this->name << ":  BraiiiiiiinnnzzzZ..." << DEFAULT << endl;
 }

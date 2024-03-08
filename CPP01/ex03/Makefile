@@ -9,10 +9,16 @@ PATH_INCLUDES = includes/
 PATH_OBJS = objs/
 
 SRCS		= main.cpp \
+			HumanA.cpp \
+			HumanB.cpp \
+			Weapon.cpp
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp
+			HumanA.hpp \
+			HumanB.hpp \
+			Weapon.hpp
 
 all: $(NAME)
 
