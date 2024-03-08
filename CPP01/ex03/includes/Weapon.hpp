@@ -12,7 +12,7 @@ private:
 public:
 	Weapon(string new_type);
 	~Weapon(void);
-	const string	&getType(void);
+	const string&	getType(void);
 	void			setType(string new_type);
 };
 

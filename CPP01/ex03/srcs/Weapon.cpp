@@ -10,12 +10,13 @@ Weapon::Weapon(string new_type)
 Weapon::~Weapon(void)
 {
 }
-const string	&getType(void)
+
+const string&	Weapon::getType(void)
 {
 	return (type);
 }
 
-void	setType(string new_type);
+void	Weapon::setType(string new_type)
 {
 	type = new_type;
 }
