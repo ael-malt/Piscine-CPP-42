@@ -2,6 +2,7 @@
 #define WEAPON_HPP
 
 #include <iostream>
+
 using	std::string;
 
 class Weapon

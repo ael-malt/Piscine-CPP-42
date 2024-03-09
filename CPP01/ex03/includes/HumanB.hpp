@@ -2,6 +2,7 @@
 #define HUMANB_HPP
 
 #include "../includes/Weapon.hpp"
+#include "../includes/Colors.hpp"
 #include <iostream>
 
 using std::string;
@@ -9,14 +10,13 @@ using std::string;
 class HumanB
 {
 private:
-	string	club;
+	string	name;
+	Weapon	*weapon;
 public:
-	HumanB(void);
 	HumanB(string new_name);
 	~HumanB();
-	void	attack();
+	void	attack(void);
 	void	setWeapon(Weapon &new_weapon);
-
 };
 
 
