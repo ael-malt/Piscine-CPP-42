@@ -48,8 +48,12 @@ void HarlFilter::complain( string level )
 {
 	string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int	i = 0;
-	while (levels[i] != level)
+	while (i < 4)
+	{
+		if (levels[i] == level)
+			break ;
 		i++;
+	}
 
 	switch (i)
 	{
