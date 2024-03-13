@@ -15,9 +15,9 @@ public:
 	Fixed(void);
 	Fixed(const int i);
 	Fixed(const float f);
-	Fixed(const Fixed &a);
+	Fixed(const Fixed &copy);
 	~Fixed();
-	Fixed & operator = (const Fixed &a);
+	Fixed & operator = (const Fixed &num);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
