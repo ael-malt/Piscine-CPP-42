@@ -8,17 +8,16 @@ ClapTrap::ClapTrap(string name) : _name(name), _hit_points(10), _energy_points(1
 }
 
 ClapTrap::~ClapTrap() {
-	cout << RED << "Destroyed " << _current_trap << BOLD << this->_name << DEFAULT << endl;
+	cout << RED << "Destroyed ClapTrap " << BOLD << this->_name << DEFAULT << endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy) {
-	cout << GREEN BOLD << "Summoned " << _current_trap << "copy " << &copy << DEFAULT << endl;
+	cout << GREEN BOLD << "Summoned ClapTrap copy for " << copy._name << DEFAULT << endl;
 	*this = copy;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap& copy) {
-	std::cout << "Assignement operator called" << std::endl;
-	
+	cout << GREEN BOLD << "Assignment operator called for ClapTrap " << copy._name << DEFAULT << endl;	
 	_name = copy._name;
 	_hit_points = copy._hit_points;
 	_energy_points = copy._energy_points;
@@ -46,7 +45,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	{
 		string s;
 		amount == 1? s = "" : s = "s" ;
-		cout << LIGHT_BLUE << _current_trap << "took " << RED << amount << LIGHT_BLUE << " point" << s << " of damage!" << DEFAULT << endl;
+		cout << LIGHT_BLUE << _current_trap << MAGENTA << this->_name << LIGHT_BLUE << " took " << RED << amount << LIGHT_BLUE << " point" << s << " of damage!" << DEFAULT << endl;
 		this->_hit_points -= amount;
 		if (this->_hit_points <= 0)
 			cout << LIGHT_BLUE << "" << _current_trap << MAGENTA << this->_name << RED BOLD << " DIED!"  << DEFAULT << endl;
@@ -71,3 +70,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		cout << LIGHT_CYAN << "" << _current_trap << GREEN << this->_name << LIGHT_CYAN << " tried to regain hit points but is already dead!" << DEFAULT << endl;
 }
 
+int	ClapTrap::getHP(void)
+{
+	return(this->_hit_points);
+}

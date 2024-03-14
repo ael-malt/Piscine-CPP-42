@@ -2,7 +2,7 @@ NAME	= DiamondTrap
 
 CPP		= c++
 
-FLAGS	= -Werror -Wall -Wextra-std=c++98 -g3
+FLAGS	= -Werror -Wall -Wextra -std=c++98 -g3
 
 PATH_SRCS = srcs/
 PATH_INCLUDES = includes/

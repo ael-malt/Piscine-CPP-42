@@ -12,18 +12,20 @@ FragTrap::FragTrap(string name) : ClapTrap(name) {
 }
 
 FragTrap::~FragTrap() {
-	cout << RED << "Destroyed " << _current_trap << BOLD << this->_name << DEFAULT << endl;
+	cout << RED << "Destroyed FragTrap " << BOLD << this->_name << DEFAULT << endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy) {
-	cout << GREEN BOLD << "Summoned " << _current_trap << "copy " << &copy << DEFAULT << endl;
+	cout << GREEN BOLD << "Summoned FragTrap copy for " << copy._name << DEFAULT << endl;
 	*this = copy;
 }
+
 FragTrap &FragTrap::operator=(const FragTrap& copy) {
+	cout << GREEN BOLD << "Assignment operator called for FragTrap " << copy._name << DEFAULT << endl;
 	ClapTrap::operator=(copy);
 	return (*this);
 }
 
 void FragTrap::highFivesGuys() {
-	cout << YELLOW << _current_trap << this->_name << " kindly asks for a friendly High Five!" << DEFAULT << endl;
+	cout << YELLOW << "FragTrap " << this->_name << " kindly asks for a friendly High Five!" << DEFAULT << endl;
 }

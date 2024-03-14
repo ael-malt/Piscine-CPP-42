@@ -12,7 +12,12 @@ int main(void)
 	FragTrap	FragA("FragA");
 	FragTrap	FragB("FragB");
 	
-	ClapA.attack("ClapB");
+	ScavA.takeDamage(1);
+	ScavA.takeDamage(1);
+	ScavTrap ScavD	= ScavA;
+	std::cout << ScavD.getHP() << std::endl;
+
+	ClapA.attack("ClapD");
 	ClapB.takeDamage(1);
 
 	ClapB.attack("ClapA");
@@ -67,5 +72,6 @@ int main(void)
 	
 	ScavB.attack("FragA");
 	FragA.takeDamage(99999999);
+
 	return (0);
 }

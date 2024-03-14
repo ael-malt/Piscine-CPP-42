@@ -15,6 +15,11 @@ int main(void)
 	DiamondTrap DiamondTrapA("DiamondTrapA");
 	DiamondTrap DiamondTrapB("DiamondTrapB");
 	
+	DiamondTrapA.takeDamage(1);
+	DiamondTrapA.takeDamage(1);
+	ScavTrap DiamondTrapD	= DiamondTrapA;
+	std::cout << DiamondTrapD.getHP() << std::endl;
+
 	ClapA.attack("ClapB");
 	ClapB.takeDamage(1);
 
@@ -70,5 +75,9 @@ int main(void)
 	
 	ScavB.attack("FragA");
 	FragA.takeDamage(99999999);
+
+	DiamondTrapA.attack("DiamondTrapB");
+	DiamondTrapB.takeDamage(30);
+
 	return (0);
 }

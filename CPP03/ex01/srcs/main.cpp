@@ -9,7 +9,11 @@ int main(void)
 	ScavTrap	ScavA("ScavA");
 	ScavTrap	ScavB("ScavB");
 
-	//
+	ScavA.takeDamage(1);
+	ScavA.takeDamage(1);
+	ScavTrap ScavD	= ScavA;
+	std::cout << ScavD.getHP() << std::endl;
+	
 	ClapA.attack("ClapB");
 	ClapB.takeDamage(1);
 

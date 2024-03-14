@@ -8,12 +8,12 @@ DiamondTrap::DiamondTrap(string name) : ClapTrap(name + "_clap_name"), ScavTrap(
 	FragTrap::_hit_points = 100;
 	ScavTrap::_energy_points = 50;
 	FragTrap::_attack_damage = 30;
-	_current_trap = "DiamondTrap ";
+	this->_current_trap = "DiamondTrap ";
 	cout << GREEN << "Summoned " << _current_trap << BOLD << _name << DEFAULT << endl;
 }
 
 DiamondTrap::~DiamondTrap() {
-	cout << RED << "Destroyed " << _current_trap << BOLD << this->_name << DEFAULT << endl;
+	cout << RED << "Destroyed DiamondTrap " << BOLD << this->_name << DEFAULT << endl;
 }
 
 void	DiamondTrap::whoAmI() {
@@ -21,6 +21,12 @@ void	DiamondTrap::whoAmI() {
 	cout << "My ClapTrap name is:" << ClapTrap::_name;
 }
 
-// void DiamondTrap::guardGate() {
-// 	cout << YELLOW << _current_trap << GREEN << this->_name << YELLOW << " is now guarding the gate!" << DEFAULT << endl;
-// }
+DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy) {
+	cout << GREEN BOLD << "Summoned DiamondTrap copy for " << copy._name << DEFAULT << endl;
+	*this = copy;
+}
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap& copy) {
+	cout << GREEN BOLD << "Assignment operator called for DiamondTrap " << copy._name << DEFAULT << endl;
+	ClapTrap::operator=(copy);
+	return (*this);
+}

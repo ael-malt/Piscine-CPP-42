@@ -12,18 +12,19 @@ ScavTrap::ScavTrap(string name) : ClapTrap(name) {
 }
 
 ScavTrap::~ScavTrap() {
-	cout << RED << "Destroyed " << _current_trap << BOLD << this->_name << DEFAULT << endl;
+	cout << RED << "Destroyed ScavTrap " << BOLD << this->_name << DEFAULT << endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
-	cout << GREEN BOLD << "Summoned " << _current_trap << "copy " << &copy << DEFAULT << endl;
+	cout << GREEN BOLD << "Summoned ScavTrap copy for " << copy._name << DEFAULT << endl;
 	*this = copy;
 }
 ScavTrap &ScavTrap::operator=(const ScavTrap& copy) {
+	cout << GREEN BOLD << "Assignment operator called for ScavTrap " << copy._name << DEFAULT << endl;
 	ClapTrap::operator=(copy);
 	return (*this);
 }
 
 void ScavTrap::guardGate() {
-	cout << YELLOW << _current_trap << GREEN << this->_name << YELLOW << " is now guarding the gate!" << DEFAULT << endl;
+	cout << YELLOW << "ScavTrap " << GREEN << this->_name << YELLOW << " is now guarding the gate!" << DEFAULT << endl;
 }

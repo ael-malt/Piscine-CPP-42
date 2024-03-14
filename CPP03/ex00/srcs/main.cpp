@@ -8,6 +8,11 @@ int main(void)
 	ClapTrap	C("C");
 
 
+	A.takeDamage(1);
+	A.takeDamage(1);
+	ClapTrap D	= A;
+	std::cout << D.getHP() << std::endl;
+	
 	A.attack("B");
 	B.takeDamage(1);
 
