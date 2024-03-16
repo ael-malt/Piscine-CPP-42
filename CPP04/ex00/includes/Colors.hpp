@@ -16,7 +16,7 @@
 # define GREY			"\033[90m"
 
 # define LIGHT_BLUE		COLOR(12)
-# define LIGHT_BLUE1		COLOR(39)
+# define LIGHTER_BLUE		COLOR(39)
 # define LIGHT_CYAN		COLOR(45)
 # define SKY_BLUE		COLOR(69)
 # define DARK_RED		COLOR(88)

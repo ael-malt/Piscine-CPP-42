@@ -18,7 +18,7 @@ DiamondTrap::~DiamondTrap() {
 
 void	DiamondTrap::whoAmI() {
 	cout << "My name is: " << this->_name << endl;
-	cout << "My ClapTrap name is:" << ClapTrap::_name;
+	cout << "My ClapTrap name is:" << ClapTrap::_name << endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy) {

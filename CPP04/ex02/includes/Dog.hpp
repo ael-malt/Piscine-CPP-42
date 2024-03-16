@@ -1,5 +1,5 @@
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 # include "Colors.hpp"
 # include "Animal.hpp"
@@ -10,18 +10,17 @@ using	std::string;
 using	std::cout;
 using	std::endl;
 
-class Cat : public Animal
+class Dog : public Animal
 {
 private:
 	Brain *_brain;
 public:
-	Cat(void);
-	~Cat();
+	Dog(void);
+	~Dog();
+	Dog(const Dog& copy);
+	Dog& operator=(const Dog& copy);
 	
-	Cat(const Cat& copy);
-	Cat& operator=(const Cat& copy);
 	void	makeSound(void) const;
-
 };
 
 #endif
