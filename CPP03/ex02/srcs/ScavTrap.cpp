@@ -5,7 +5,7 @@ using	std::endl;
 
 ScavTrap::ScavTrap(string name) : ClapTrap(name) {
 	_hit_points = 100;
-	_energy_points = 50;
+	_energy_points = 100;
 	_attack_damage = 20;
 	_current_trap = "ScavTrap ";
 	cout << GREEN << "Summoned " << _current_trap << BOLD << _name << DEFAULT << endl;
