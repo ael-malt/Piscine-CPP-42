@@ -1,6 +1,6 @@
 #include "../includes/Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat") {
+Cat::Cat(void) : AAnimal("Cat") {
 	this->_type = "Cat";
 	this->_brain = new Brain("Cat");
 	cout << GREEN << "Created a " << BOLD << _type << DEFAULT << endl;
@@ -11,7 +11,7 @@ Cat::~Cat() {
 	delete this->_brain;
 }
 
-Cat::Cat(const Cat& copy) : Brain("Cat"), Animal() {
+Cat::Cat(const Cat& copy) : Brain("Cat"), AAnimal() {
 	cout << GREEN BOLD << "Copy of " << copy._type << DEFAULT << endl;
 	*this = copy;
 }

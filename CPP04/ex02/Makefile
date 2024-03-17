@@ -1,4 +1,4 @@
-NAME	= Brain
+NAME	= Abstract
 
 CPP		= c++
 
@@ -9,7 +9,7 @@ PATH_INCLUDES = includes/
 PATH_OBJS = objs/
 
 SRCS		= main.cpp \
-			Animal.cpp \
+			AAnimal.cpp \
 			WrongAnimal.cpp \
 			Dog.cpp \
 			Cat.cpp \
@@ -19,7 +19,7 @@ SRCS		= main.cpp \
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
-			Animal.hpp \
+			AAnimal.hpp \
 			WrongAnimal.hpp \
 			Dog.hpp \
 			Cat.hpp \

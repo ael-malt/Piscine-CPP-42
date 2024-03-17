@@ -1,4 +1,4 @@
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "WrongAnimal.hpp"
 # include "Dog.hpp"
 # include "Cat.hpp"
@@ -6,7 +6,7 @@
 
 int main()
 {
-	Animal* animals[10];
+	AAnimal* animals[10];
 
 	for (size_t i = 0; i < 10; i++)
 	{
@@ -32,13 +32,13 @@ int main()
 	{
 		animals[i]->printIdeas();
 	}
-	
-	
-	
 	for (size_t i = 0; i < 10; i++)
 	{
 		delete animals[i];
 	}
-	
+	// Does not work because of abstract class:
+	// AAnimal animal;
+	// animal.makeSound();
+
 	return 0;
 }

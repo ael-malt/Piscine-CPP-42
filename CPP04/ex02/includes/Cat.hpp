@@ -2,7 +2,7 @@
 # define CAT_HPP
 
 # include "Colors.hpp"
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 # include <iostream>
 
@@ -10,7 +10,7 @@ using	std::string;
 using	std::cout;
 using	std::endl;
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 private:
 	Brain *_brain;

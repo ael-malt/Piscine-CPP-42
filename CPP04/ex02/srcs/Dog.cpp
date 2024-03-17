@@ -1,6 +1,6 @@
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog") {
+Dog::Dog(void) : AAnimal("Dog") {
 	this->_type = "Dog";
 	this->_brain = new Brain("Dog");
 	cout << GREEN << "Created a " << BOLD << _type << DEFAULT << endl;
@@ -11,7 +11,7 @@ Dog::~Dog() {
 	delete this->_brain;
 }
 
-Dog::Dog(const Dog& copy) : Brain("Dog"), Animal() {
+Dog::Dog(const Dog& copy) : Brain("Dog"), AAnimal() {
 	cout << GREEN BOLD << "Copy of " << copy._type << DEFAULT << endl;
 	*this = copy;
 }
