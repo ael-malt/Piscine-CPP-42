@@ -1,4 +1,4 @@
-NAME	= Abstract
+NAME	= Interface
 
 CPP		= c++
 
@@ -10,13 +10,21 @@ PATH_OBJS = objs/
 
 SRCS		= main.cpp \
 				AMateria.cpp \
-				ICharacter.cpp \
+				Character.cpp \
+				Cure.cpp \
+				Ice.cpp \
+				MateriaSource.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
 				AMateria.hpp \
 				ICharacter.hpp \
+				Character.hpp \
+				Cure.hpp \
+				Ice.hpp \
+				IMateriaSource.hpp \
+				MateriaSource.hpp \
 
 all: $(NAME)
 

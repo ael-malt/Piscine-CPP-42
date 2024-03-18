@@ -8,22 +8,26 @@
 using std::string;
 using std::cout;
 using std::endl;
-
+using std::ostream;
 class AMateria;
 
-class Character
-{
+class Character : public ICharacter {
 private:
-	AMateria	*inventory;
+	AMateria	*_inventory[4];
+	string		_name;
 public:
-	Character();
-	virtual ~Character();
+	Character(void);
+	Character(string const);
+	virtual ~Character(void);
 	Character(const Character& copy);
 	Character&	operator=(const Character& copy);
 	
-	virtual void equip(AMateria* m) = 0;
-	virtual void unequip(int idx) = 0;
-	virtual void use(int idx, ICharacter& target) = 0;
+	string	const	&getName() const;
+	virtual void equip(AMateria* m);
+	virtual void unequip(int idx);
+	virtual void use(int idx, ICharacter& target);
 };
+
+ostream&	operator<<(ostream&, const Character&);
 
 #endif
