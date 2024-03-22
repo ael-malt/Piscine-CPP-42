@@ -15,7 +15,7 @@ Animal::~Animal()
 	
 }
 
-Animal::Animal(const Animal& copy) {
+Animal::Animal(const Animal& copy) : Brain("Animal") {
 	cout << GREEN BOLD << "Copy an " << copy._type << DEFAULT << endl;
 	*this = copy;
 }

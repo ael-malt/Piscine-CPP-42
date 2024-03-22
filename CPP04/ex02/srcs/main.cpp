@@ -30,15 +30,17 @@ int main()
 
 	for (size_t i = 0; i < 10; i++)
 	{
+		cout << BROWN << animals[i]->getType() << " " << LIGHT_BLUE << i << BROWN << ": ";
 		animals[i]->printIdeas();
 	}
+
 	for (size_t i = 0; i < 10; i++)
 	{
+		cout << YELLOW << animals[i]->getType() << " " << LIGHT_BLUE << i << YELLOW << ": ";
 		delete animals[i];
 	}
 	// Does not work because of abstract class:
 	// AAnimal animal;
 	// animal.makeSound();
-
 	return 0;
 }

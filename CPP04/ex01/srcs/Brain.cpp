@@ -40,7 +40,7 @@ void	Brain::printIdeas(void) const {
 	for (size_t i = 0; i < 100; i++)
 	{
 		if (!this->_ideas[i].empty())
-			cout << LIGHTER_BLUE << "Idea " << YELLOW << i << LIGHTER_BLUE << ": " << BROWN << _ideas[i] << endl;
+			cout << LIGHTER_BLUE << "Idea " << YELLOW << i << LIGHTER_BLUE << ": " << BROWN << _ideas[i] << DEFAULT << endl;
 		else
 			break ;
 	}

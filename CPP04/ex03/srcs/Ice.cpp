@@ -21,7 +21,7 @@ AMateria* Ice::clone() const {
 }
 
 void Ice::use(ICharacter& target) {
-	cout << BLUE << " shoots an Ice bolt at " << MAGENTA << target.getName() << DEFAULT << endl;
+	cout << BLUE << " shoots an Ice bolt at " << BOLD MAGENTA << target.getName() << DEFAULT << endl;
 }
 
 ostream& operator<<(ostream& s, const Ice& copy) {

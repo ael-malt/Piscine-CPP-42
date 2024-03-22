@@ -30,7 +30,7 @@ void Cure::use(ICharacter& target) {
 	string s = "";
 	if (!target.getName().empty())
 		get_last_char(target.getName()) == 's' ? s = "'" : s = "'s";
-	cout << PINK << " cures " << MAGENTA << target.getName() << s << PINK << " wounds*" << DEFAULT << endl;
+	cout << SKY_BLUE << " cures " << MAGENTA BOLD << target.getName() << s << DEFAULT SKY_BLUE << " wounds*" << DEFAULT << endl;
 }
 
 ostream& operator<<(ostream& s, const Cure& copy) {
