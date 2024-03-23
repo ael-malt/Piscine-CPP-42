@@ -1,11 +1,10 @@
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <exception>
 
 # include "Colors.hpp"
-# include "Form.hpp"
 
 using	std::string;
 using	std::cout;
@@ -14,25 +13,25 @@ using	std::endl;
 using	std::ostream;
 using	std::exception;
 
-class Form;
-
-class Bureaucrat
+class Form
 {
 private:
 	const string	_name;
-	int				_grade;
+	bool			_signed;
+	const int		_signGrade;
+	const int		_execGrade;
 public:
-	Bureaucrat(string name, int grade);
-	~Bureaucrat();
-	Bureaucrat(const Bureaucrat& copy);
-	Bureaucrat&	operator=(const Bureaucrat& copy);
+	Form(string name, int grade);
+	~Form();
+	Form(const Form& copy);
+	Form&	operator=(const Form& copy);
 
 	string	getName(void) const;
-	int		getGrade(void) const;
+	int		getSigned(void) const;
+	int		getSignGrade(void) const;
+	int		getExecGrade(void) const;
 
-	void	increaseGrade();
-	void	decreaseGrade();
-	void	signForm(Form &form);
+
 	class GradeTooHighException : public exception
 	{
 	public:

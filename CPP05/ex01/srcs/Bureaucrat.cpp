@@ -54,7 +54,7 @@ void	Bureaucrat::decreaseGrade(){
 	this->_grade++;
 }
 
-
+void Bureaucrat::signForm(Form &form)
 ostream& operator<<(ostream& s, const Bureaucrat& obj) {
 	s << BOLD BROWN << obj.getName() << DEFAULT LIGHT_BLUE << ", bureaucrat grade " << RED << obj.getGrade() << DEFAULT << endl;
 	return (s);
