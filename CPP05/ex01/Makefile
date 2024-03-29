@@ -1,8 +1,8 @@
-NAME	= Bureaucrat
+NAME	= Form
 
-CPP		= c++
+CXX		= c++
 
-FLAGS	= -Werror -Wall -Wextra -std=c++98 -g3
+CXXFLAGS	= -Werror -Wall -Wextra -std=c++98 -g3
 
 PATH_SRCS = srcs/
 PATH_INCLUDES = includes/
@@ -10,20 +10,22 @@ PATH_OBJS = objs/
 
 SRCS		= main.cpp \
 			Bureaucrat.cpp \
+			Form.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
 			Bureaucrat.hpp \
+			Form.hpp \
 
 all: $(NAME)
 
 $(NAME): $(PATH_OBJS) $(OBJS) $(addprefix $(PATH_INCLUDES), $(INCLUDES))
-	@$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo Compilation Complete!
 
 $(OBJS): $(PATH_OBJS)%.o: $(PATH_SRCS)%.cpp $(addprefix $(PATH_INCLUDES), $(INCLUDES))
-	@$(CPP) $(FLAGS) -I$(PATH_INCLUDES) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -I$(PATH_INCLUDES) -c $< -o $@
 
 $(PATH_OBJS):
 	@mkdir -p $(PATH_OBJS)

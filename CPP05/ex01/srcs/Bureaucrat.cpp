@@ -54,7 +54,12 @@ void	Bureaucrat::decreaseGrade(){
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(Form &form) {
+	if (form.getSignGrade() < this->_grade)
+		cout << BOLD BROWN << this->_name << DEFAULT RED << " couldn't sign " << MAGENTA << form.getName() << RED " because " BOLD "grade too low" DEFAULT << endl;
+	form.beSigned(*this);
+}
+
 ostream& operator<<(ostream& s, const Bureaucrat& obj) {
 	s << BOLD BROWN << obj.getName() << DEFAULT LIGHT_BLUE << ", bureaucrat grade " << RED << obj.getGrade() << DEFAULT << endl;
 	return (s);

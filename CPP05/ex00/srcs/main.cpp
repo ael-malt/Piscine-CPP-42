@@ -23,6 +23,7 @@ int	main(void)
 	{
 		cerr << e.what() << endl;
 	}
+	cout << endl;
 	
 	try
 	{
@@ -38,10 +39,11 @@ int	main(void)
 		Bob.decreaseGrade();
 		cout << Bob;
 	}
-	catch(const std::exception& e)
+	catch(const exception& e)
 	{
 		cerr << e.what() << endl;
 	}
+	cout << endl;
 	
 	try
 	{
@@ -71,19 +73,21 @@ int	main(void)
 		Jack.decreaseGrade();
 		cout << Jack;
 	}
-	catch(const std::exception& e)
+	catch(const exception& e)
 	{
 		cerr << e.what() << endl;
 	}
+	cout << endl;
 
 	try
 	{
 		Bureaucrat Robert("Robert", 420);
 	}
-	catch(const std::exception& e)
+	catch(const exception& e)
 	{
 		cerr << e.what() << endl;
 	}
+	cout << endl;
 
 	try
 	{
@@ -92,10 +96,11 @@ int	main(void)
 		Timmy.decreaseGrade();
 
 	}
-	catch(const std::exception& e)
+	catch(const exception& e)
 	{
 		cerr << e.what() << endl;
 	}
+	cout << endl;
 	
 	return (0);
 }

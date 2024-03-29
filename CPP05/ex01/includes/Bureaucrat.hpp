@@ -33,6 +33,7 @@ public:
 	void	increaseGrade();
 	void	decreaseGrade();
 	void	signForm(Form &form);
+	
 	class GradeTooHighException : public exception
 	{
 	public:

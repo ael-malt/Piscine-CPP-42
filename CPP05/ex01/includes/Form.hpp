@@ -4,6 +4,7 @@
 # include <iostream>
 # include <exception>
 
+# include "Bureaucrat.hpp"
 # include "Colors.hpp"
 
 using	std::string;
@@ -13,6 +14,7 @@ using	std::endl;
 using	std::ostream;
 using	std::exception;
 
+class Bureaucrat;
 class Form
 {
 private:
@@ -21,15 +23,16 @@ private:
 	const int		_signGrade;
 	const int		_execGrade;
 public:
-	Form(string name, int grade);
+	Form(string name, const int signGrade, const int execGrade);
 	~Form();
 	Form(const Form& copy);
 	Form&	operator=(const Form& copy);
 
 	string	getName(void) const;
-	int		getSigned(void) const;
+	bool		getSigned(void) const;
 	int		getSignGrade(void) const;
 	int		getExecGrade(void) const;
+	void	beSigned(Bureaucrat &bureaucrat);
 
 
 	class GradeTooHighException : public exception
@@ -46,6 +49,6 @@ public:
 	
 };
 
-ostream&	operator<<(ostream&, const Bureaucrat&);
+ostream&	operator<<(ostream&, const Form&);
 
 #endif
