@@ -8,6 +8,9 @@ const char* AForm::GradeTooLowException::what() const throw() {
 	return(RED "Error:	The Grade is too Low!" DEFAULT);
 }
 
+const char* AForm::FormNotSigned::what() const throw() {
+	return(RED "Error:	Form not signed!" DEFAULT);
+}
 AForm::AForm() : _name(""), _signed(false), _signGrade(0), _execGrade(0) {}
 
 AForm::AForm(string name, const int signGrade, const int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
@@ -19,7 +22,7 @@ AForm::AForm(string name, const int signGrade, const int execGrade) : _name(name
 
 AForm::~AForm() {}
 
-AForm::AForm(const AForm& copy): _name(copy._name), _signed(false), _signGrade(copy._signGrade), _execGrade(copy._execGrade) {
+AForm::AForm(const AForm& copy): _name(copy._name), _signed(copy._signed), _signGrade(copy._signGrade), _execGrade(copy._execGrade) {
 	*this = copy;
 }
 

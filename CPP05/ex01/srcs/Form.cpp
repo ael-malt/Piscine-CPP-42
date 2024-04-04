@@ -17,7 +17,7 @@ Form::Form(string name, const int signGrade, const int execGrade) : _name(name),
 
 Form::~Form() {}
 
-Form::Form(const Form& copy): _name(copy._name), _signed(false), _signGrade(copy._signGrade), _execGrade(copy._execGrade) {
+Form::Form(const Form& copy): _name(copy._name), _signed(copy._signed), _signGrade(copy._signGrade), _execGrade(copy._execGrade) {
 	*this = copy;
 }
 

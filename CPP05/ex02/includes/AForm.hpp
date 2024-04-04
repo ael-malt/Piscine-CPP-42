@@ -30,11 +30,11 @@ public:
 	AForm&	operator=(const AForm& copy);
 
 	string	getName(void) const;
-	bool		getSigned(void) const;
+	bool	getSigned(void) const;
 	int		getSignGrade(void) const;
 	int		getExecGrade(void) const;
 	void	beSigned(Bureaucrat const &bureaucrat);
-	virtual void	beExecuted(Bureaucrat const &bureaucrat);
+	virtual void	beExecuted(Bureaucrat const &bureaucrat) const = 0;
 
 
 	class GradeTooHighException : public exception
@@ -49,6 +49,11 @@ public:
 		virtual const char* what() const throw();
 	};
 	
+	class FormNotSigned : public exception
+	{
+		public:
+			const char* what() const throw();
+	};
 };
 
 ostream&	operator<<(ostream&, const AForm&);
