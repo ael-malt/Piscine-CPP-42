@@ -16,8 +16,55 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void	ShrubberyCreationForm::beExecuted(Bureaucrat const &bureaucrat) {
-	if (this->getSignGrade() < this->getExecGrade())
-		cout << BOLD BROWN << this->_target << DEFAULT RED << " couldn't execute " << MAGENTA << this->getName() << RED " because: " BOLD "grade too low!" DEFAULT << endl;
-	if (this->getSignGrade() >= this->getExecGrade() && !this->getSigned())
-		cout << BOLD BROWN << this->_target << DEFAULT RED << " couldn't execute " << MAGENTA << this->getName() << RED " because: " BOLD "form is not signed!" DEFAULT << endl;
+	if (this->getSigned())
+		throw(ShrubberyCreationForm::FormNotSigned());
+	if (bureaucrat.getGrade() < this->getExecGrade())
+		throw(ShrubberyCreationForm::GradeTooLowException());
+	ofstream shrubberryFile((this->_target + "_shrubbery").c_str());
+	shrubberryFile << "                                                      ____                               " << endl;
+	shrubberryFile << "                                               ______/    \_____                         " << endl;
+	shrubberryFile << "                                              /                 \                        " << endl;
+	shrubberryFile << "             ____                            |                   |                       " << endl;
+	shrubberryFile << "            /    \_____       ____           |                   |     __                " << endl;
+	shrubberryFile << "           /           \     /    \_    ____/                    | ___/  |               " << endl;
+	shrubberryFile << "          |             \__ |_      |__|                         |/      |__             " << endl;
+	shrubberryFile << "          |                \__\                                            /             " << endl;
+	shrubberryFile << "           \                                                              /              " << endl;
+	shrubberryFile << "      ___   \                                                         ___/               " << endl;
+	shrubberryFile << "      |  \  |                                                        |                   " << endl;
+	shrubberryFile << "     /    \  \                                                    ___|                   " << endl;
+	shrubberryFile << "    /      \__\                                                  |                       " << endl;
+	shrubberryFile << "    |         \|                                                 /                       " << endl;
+	shrubberryFile << "     \____                                                  ____/    __                   " << endl;
+	shrubberryFile << "          \___                                             |        /  \    ___          " << endl;
+	shrubberryFile << "              \                  |                          \      /    \__/   \            " << endl;
+	shrubberryFile << "               \ ____            \___                        \____|            |          " << endl;
+	shrubberryFile << "                      \              \               ___                       /             " << endl;
+	shrubberryFile << "                       \___           \          ___/   \                     |               " << endl;
+	shrubberryFile << "                           \     ____  \        /        \____             ___/                     " << endl;
+	shrubberryFile << "                            \___/    \ |       /              \        ___/                             " << endl;
+	shrubberryFile << "                                      \|      |                \______/                            " << endl;
+	shrubberryFile << "                                       |      |                                           " << endl;
+	shrubberryFile << "                                       |      |                                           " << endl;
+	shrubberryFile << "                                       |      /                                           " << endl;
+	shrubberryFile << "                                       |     |                                           " << endl;
+	shrubberryFile << "                                       |     |                                           " << endl;
+	shrubberryFile << "                                       |     |                                           " << endl;
+	shrubberryFile << "                                       |     |                                           " << endl;
+	shrubberryFile << "                                      /      |                                           " << endl;
+	shrubberryFile << "                                      |      |                                           " << endl;
+	shrubberryFile << "                                      /      |                                           " << endl;
+	shrubberryFile << "                                     |       |                                           " << endl;
+	shrubberryFile << "                                     |       |                                           " << endl;
+	shrubberryFile << "                                     |        \                                          " << endl;
+	shrubberryFile << "                                     |        |                                          " << endl;
+	shrubberryFile << "                                     /        |                                          " << endl;
+	shrubberryFile << "                                    |         \                                          " << endl;
+	shrubberryFile << "                                    |          |                                         " << endl;
+	shrubberryFile << "                                    |          |                                         " << endl;
+	shrubberryFile << "                                    |           \                                        " << endl;
+	shrubberryFile << "                                    |           |                                        " << endl;
+	shrubberryFile << "                                    /           |                                        " << endl;
+	shrubberryFile << "                                   |            |                                        " << endl;
 }
+

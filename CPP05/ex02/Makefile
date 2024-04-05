@@ -10,18 +10,24 @@ PATH_OBJS = objs/
 
 SRCS		= main.cpp \
 			Bureaucrat.cpp \
-			Form.cpp \
+			AForm.cpp \
+			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
 			Bureaucrat.hpp \
-			Form.hpp \
+			AForm.hpp \
+			PresidentialPardonForm.hpp \
+			RobotomyRequestForm.hpp \
+			ShrubberyCreationForm.hpp \
 
 all: $(NAME)
 
 $(NAME): $(PATH_OBJS) $(OBJS) $(addprefix $(PATH_INCLUDES), $(INCLUDES))
-	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX)  $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo Compilation Complete!
 
 $(OBJS): $(PATH_OBJS)%.o: $(PATH_SRCS)%.cpp $(addprefix $(PATH_INCLUDES), $(INCLUDES))

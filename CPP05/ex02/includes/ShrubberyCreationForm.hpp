@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <exception>
+# include <fstream>
 
 # include "Bureaucrat.hpp"
 # include "Colors.hpp"
@@ -13,6 +14,7 @@ using	std::cout;
 using	std::cerr;
 using	std::endl;
 using	std::ostream;
+using	std::ofstream;
 using	std::exception;
 
 class ShrubberyCreationForm : public AForm
@@ -30,6 +32,6 @@ public:
 
 };
 
-
+ostream&	operator<<(ostream&, const ShrubberyCreationForm&);
 
 #endif
