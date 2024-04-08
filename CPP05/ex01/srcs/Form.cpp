@@ -62,7 +62,7 @@ void Form::beSigned(Bureaucrat const &bureaucrat) {
 
 ostream& operator<<(ostream& s, const Form& obj) {
 	string isSigned = "";
-	obj.getSigned() == 0 ? isSigned = "false" : isSigned = "true" ;
-	s << MAGENTA << obj.getName() << DEFAULT LIGHT_BLUE << ", is signed: " << RED << isSigned << DEFAULT LIGHT_BLUE << ", form sign grade: " << RED << obj.getSignGrade() << DEFAULT LIGHT_BLUE << ", form sign grade: " << RED << obj.getExecGrade() << DEFAULT << endl;
+	obj.getSigned() == 0 ? isSigned = RED "false" : isSigned = GREEN "true" ;
+	s << MAGENTA << obj.getName() << DEFAULT LIGHT_BLUE << ", is signed: " << isSigned << DEFAULT LIGHT_BLUE << ", Aform sign grade: " << RED << obj.getSignGrade() << DEFAULT LIGHT_BLUE << ", Aform sign grade: " << RED << obj.getExecGrade() << DEFAULT << endl;
 	return (s);
 }

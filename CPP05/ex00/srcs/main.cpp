@@ -1,7 +1,3 @@
-//***************************//
-//*Template by pulgamecanica*//
-//***************************//
-
 #include "Bureaucrat.hpp"
 
 
