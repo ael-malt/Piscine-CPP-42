@@ -1,12 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm("", 137, 145), _target("") {}
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm("", 25, 5), _target("") {}
 
-PresidentialPardonForm::PresidentialPardonForm(string target) : AForm(target, 137, 145), _target(target){}
+PresidentialPardonForm::PresidentialPardonForm(string target) : AForm(target, 25, 5), _target(target){}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy): AForm(copy._target, 137, 145), _target(copy._target){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy): AForm(copy._target, 25, 5), _target(copy._target){
 	*this = copy;
 }
 
@@ -20,6 +20,7 @@ void	PresidentialPardonForm::beExecuted(Bureaucrat const &bureaucrat) const {
 		throw(PresidentialPardonForm::FormNotSigned());
 	if (bureaucrat.getGrade() > this->getExecGrade())
 		throw(PresidentialPardonForm::GradeTooLowException());
-	ofstream shrubberryFile((this->_target + "_shrubbery").c_str());
+		cout << GREEN BOLD << this->_target << DEFAULT GREEN " has been pardoned by Zaphod Beeblebrox" DEFAULT << endl;
+
 }
 

@@ -1,12 +1,12 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm("", 137, 145), _target("") {}
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm("", 72, 45), _target("") {}
 
-RobotomyRequestForm::RobotomyRequestForm(string target) : AForm(target, 137, 145), _target(target){}
+RobotomyRequestForm::RobotomyRequestForm(string target) : AForm(target, 72, 45), _target(target){}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy): AForm(copy._target, 137, 145), _target(copy._target){
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy): AForm(copy._target, 72, 45), _target(copy._target){
 	*this = copy;
 }
 
@@ -20,6 +20,11 @@ void	RobotomyRequestForm::beExecuted(Bureaucrat const &bureaucrat) const {
 		throw(RobotomyRequestForm::FormNotSigned());
 	if (bureaucrat.getGrade() > this->getExecGrade())
 		throw(RobotomyRequestForm::GradeTooLowException());
-	ofstream shrubberryFile((this->_target + "_shrubbery").c_str());
+	cout << RED BOLD "**DRILLING NOISES**" DEFAULT << endl;
+	int nb = rand() % 2;
+	if (nb == 0)
+		cout << RED BOLD << this->_target << DEFAULT RED " has been successfully robotimized!" DEFAULT << endl;
+	if (nb == 1)
+		cout << RED BOLD << this->_target << DEFAULT RED " failed to be robotomized!" DEFAULT << endl;
 }
 
