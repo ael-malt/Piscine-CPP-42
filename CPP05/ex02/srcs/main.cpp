@@ -69,5 +69,47 @@ int	main(void)
 	{
 		cerr << e.what() << '\n';
 	}
+	cout << endl;
+	try
+	{
+		AForm *PresForm1 = new PresidentialPardonForm("PresForm1");
+		cout << *PresForm1;
+
+		Bureaucrat Zouzou("Zouzou", 59);
+		cout << Zouzou;
+
+		Bureaucrat Lester("Lester", 40);
+		cout << Lester;
+
+		// Zouzou.signForm(*PresForm1);
+		cout << *PresForm1;
+
+		Lester.executeForm(*PresForm1);
+	}
+	catch(const std::exception& e)
+	{
+		cerr << e.what() << '\n';
+	}
+	cout << endl;
+	try
+	{
+		AForm *PresForm1 = new PresidentialPardonForm("PresForm1");
+		cout << *PresForm1;
+
+		Bureaucrat Zouzou("Zouzou", 25);
+		cout << Zouzou;
+
+		Bureaucrat Lester("Lester", 4);
+		cout << Lester;
+
+		Zouzou.signForm(*PresForm1);
+		cout << *PresForm1;
+
+		Lester.executeForm(*PresForm1);
+	}
+	catch(const std::exception& e)
+	{
+		cerr << e.what() << '\n';
+	}
 	return (0);
 }
