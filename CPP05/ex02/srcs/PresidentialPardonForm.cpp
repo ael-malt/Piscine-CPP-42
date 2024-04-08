@@ -20,7 +20,5 @@ void	PresidentialPardonForm::beExecuted(Bureaucrat const &bureaucrat) const {
 		throw(PresidentialPardonForm::FormNotSigned());
 	if (bureaucrat.getGrade() > this->getExecGrade())
 		throw(PresidentialPardonForm::GradeTooLowException());
-		cout << GREEN BOLD << this->_target << DEFAULT GREEN " has been pardoned by Zaphod Beeblebrox" DEFAULT << endl;
-
+	cout << GREEN BOLD << this->_target << DEFAULT GREEN " has been pardoned by Zaphod Beeblebrox" DEFAULT << endl;
 }
-

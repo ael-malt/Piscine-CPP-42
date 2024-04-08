@@ -27,11 +27,11 @@ int	main(void)
 	{
 		cerr << e.what() << '\n';
 	}
-
+	cout << endl;
 	try
 	{
-		AForm *ShrubForm1 = new Robotomy("ShrubForm1");
-		cout << *ShrubForm1;
+		AForm *RobForm1 = new RobotomyRequestForm("RobForm1");
+		cout << *RobForm1;
 
 		Bureaucrat Henry("Henry", 102);
 		cout << Henry;
@@ -39,10 +39,31 @@ int	main(void)
 		Bureaucrat Paco("Paco", 50);
 		cout << Paco;
 
-		Henry.signForm(*ShrubForm1);
-		cout << *ShrubForm1;
+		Henry.signForm(*RobForm1);
+		cout << *RobForm1;
 
-		Paco.executeForm(*ShrubForm1);
+		Paco.executeForm(*RobForm1);
+	}
+	catch(const std::exception& e)
+	{
+		cerr << e.what() << '\n';
+	}
+	cout << endl;
+	try
+	{
+		AForm *RobForm2 = new RobotomyRequestForm("RobForm2");
+		cout << *RobForm2;
+
+		Bureaucrat Jack("Jack", 59);
+		cout << Jack;
+
+		Bureaucrat Bob("Bob", 40);
+		cout << Bob;
+
+		Jack.signForm(*RobForm2);
+		cout << *RobForm2;
+
+		Bob.executeForm(*RobForm2);
 	}
 	catch(const std::exception& e)
 	{

@@ -22,9 +22,9 @@ void	RobotomyRequestForm::beExecuted(Bureaucrat const &bureaucrat) const {
 		throw(RobotomyRequestForm::GradeTooLowException());
 	cout << RED BOLD "**DRILLING NOISES**" DEFAULT << endl;
 	int nb = rand() % 2;
-	if (nb == 0)
+	if (nb)
 		cout << RED BOLD << this->_target << DEFAULT RED " has been successfully robotimized!" DEFAULT << endl;
-	if (nb == 1)
+	else
 		cout << RED BOLD << this->_target << DEFAULT RED " failed to be robotomized!" DEFAULT << endl;
 }
 

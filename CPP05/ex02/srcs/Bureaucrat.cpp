@@ -65,7 +65,7 @@ void Bureaucrat::executeForm(AForm const &form) {
 		cout << BOLD BROWN << this->_name << DEFAULT RED << " couldn't execute " << MAGENTA << form.getName() << RED " because: " BOLD "grade too low!" DEFAULT << endl;
 	if (form.getSignGrade() >= this->_grade && !form.getSigned())
 		cout << BOLD BROWN << this->_name << DEFAULT RED << " couldn't execute " << MAGENTA << form.getName() << RED " because: " BOLD "form is not signed!" DEFAULT << endl;
-	cout << GREEN BOLD << this->_name << DEFAULT GREEN << "executed" << MAGENTA << form.getName() << DEFAULT << endl;
+	cout << GREEN BOLD << this->_name << DEFAULT GREEN << " executed " << MAGENTA << form.getName() << DEFAULT << endl;
 	form.beExecuted(*this);
 }
 
