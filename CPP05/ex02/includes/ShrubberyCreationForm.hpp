@@ -28,10 +28,10 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
 	ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& copy);
 
-	void	beExecuted(Bureaucrat const &bureaucrat);
+	void	beExecuted(Bureaucrat const &bureaucrat) const;
 
 };
 
-ostream&	operator<<(ostream&, const ShrubberyCreationForm&);
+// ostream&	operator<<(ostream&, const ShrubberyCreationForm&);
 
 #endif
