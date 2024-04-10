@@ -1,4 +1,4 @@
-NAME	= Serializer
+NAME	= Base
 
 CXX		= c++
 
@@ -9,12 +9,12 @@ PATH_INCLUDES = includes/
 PATH_OBJS = objs/
 
 SRCS		= main.cpp \
-			Serializer.cpp \
+			Base.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
-			Serializer.hpp \
+			Base.hpp \
 
 all: $(NAME)
 
