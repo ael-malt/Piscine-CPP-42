@@ -1,4 +1,4 @@
-NAME	= Iter
+NAME	= Array
 
 CXX		= c++
 
@@ -13,7 +13,7 @@ SRCS		= main.cpp \
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
-			Iter.hpp \
+			Array.hpp \
 
 all: $(NAME)
 

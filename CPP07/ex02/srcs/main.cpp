@@ -1,44 +1,34 @@
-#include "Iter.hpp"
-
-
-// static int	ft_toupper(int c)
-// {
-// 	if (c >= 'a' && c <= 'z')
-// 		return (c - ' ');
-// 	return (c);
-// }
-template <typename T> void ft_toupper(T &c) {
-	c >= 'a' && c <= 'z' ? c -= ' ' : c;
-}
-
-template <typename T> void ft_tolower(T &c) {
-	c >= 'A' && c <= 'Z' ? c += ' ' : c;
-}
-
-template <typename T> void printVal(T &val) {
-	cout << val;
-}
+#include "Array.hpp"
 
 int main( void ) {
-	char Arr[6] = {"abcde"};
-
-	cout << "Before ft_toupper" << endl;
-	iter(Arr, 5, printVal);
-	cout << endl;
-	iter(Arr, 5, ft_toupper);
-	cout << "After ft_toupper" << endl;
-	iter(Arr, 5, printVal);
-	cout << endl;
-	
-	cout << endl;
-	
-	cout << "Before ft_tolower" << endl;
-	iter(Arr, 5, printVal);
-	cout << endl;
-	iter(Arr, 5, ft_tolower);
-	cout << "After ft_tolower" << endl;
-	iter(Arr, 5, printVal);
-	cout << endl;
-
+	try
+	{
+		Array<int> empty_array(1);
+		(void)empty_array;
+		Array<int> array1(1);
+		Array<int> array2(2);
+		array1[0] = 42;
+		array2[0] = 69;
+		array2[1] = 27;
+		cout << array1[0] << endl;
+		cout << array2[0] << endl;
+		cout << array2[1] << endl;
+		cout << array2[1] << endl;
+		cout << endl;
+		Array<int> array3(42);
+		for (unsigned int i = 0; i < array3.size(); i++)
+			array3[i] = i;
+		for (unsigned int i = 0; i < array3.size(); i++)
+		{
+			cout << array3[i];
+			if(i < array3.size() - 1)
+				cout << ", ";
+		}
+		cout << endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
