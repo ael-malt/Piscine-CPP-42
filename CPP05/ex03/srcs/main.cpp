@@ -115,8 +115,10 @@ int	main(void)
 		AForm* InternPrezForm;
 		InternPrezForm = PrezIntern.makeForm("PresidentialPardonForm", "PresFormByIntern");
 		cout << *InternPrezForm;
-		Bureaucrat Paul("Paul", 12);
+		Bureaucrat Paul("Paul", 2);
 		cout << Paul;
+		Paul.signForm(*InternPrezForm);
+		cout << *InternPrezForm;
 		Paul.executeForm(*InternPrezForm);
 		cout << *InternPrezForm;
 	}
