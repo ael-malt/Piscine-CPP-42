@@ -1,4 +1,4 @@
-NAME	= EasyFind
+NAME	= easyFind
 
 CXX		= c++
 
@@ -13,7 +13,7 @@ SRCS		= main.cpp \
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
-			EasyFind.hpp \
+			easyFind.hpp \
 
 all: $(NAME)
 
