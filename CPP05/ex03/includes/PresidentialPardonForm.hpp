@@ -28,7 +28,6 @@ public:
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& copy);
 
 	void	execute(Bureaucrat const &bureaucrat) const;
-
 };
 
 // ostream&	operator<<(ostream&, const PresidentialPardonForm&);

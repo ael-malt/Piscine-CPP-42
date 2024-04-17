@@ -1,11 +1,11 @@
 #include "Form.hpp"
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return(RED "Error:	The Grade is too High!" DEFAULT);
+	return(RED "Error: The Grade is too High!" DEFAULT);
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return(RED "Error:	The Grade is too Low!" DEFAULT);
+	return(RED "Error: The Grade is too Low!" DEFAULT);
 }
 
 Form::Form(string name, const int signGrade, const int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {

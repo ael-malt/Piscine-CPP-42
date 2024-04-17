@@ -1,11 +1,11 @@
 #include "Bureaucrat.hpp"
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return(RED "Error:	The Grade is too High! \n	Try with a grade lower or equal to 1." DEFAULT);
+	return(RED "Error: The Grade is too High! \n	Try with a grade lower or equal to 1." DEFAULT);
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return(RED "Error:	The Grade is too Low! \n	Try with a grade higher or equal to 150." DEFAULT);
+	return(RED "Error: The Grade is too Low! \n	Try with a grade higher or equal to 150." DEFAULT);
 }
 
 Bureaucrat::Bureaucrat(string name, int grade) : _name(name) {
@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat(string name, int grade) : _name(name) {
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy): _name(copy._name) {
+Bureaucrat::Bureaucrat(const Bureaucrat& copy): _name(copy._name), _grade(copy._grade){
 	*this = copy;
 }
 

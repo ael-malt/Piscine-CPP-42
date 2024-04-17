@@ -1,4 +1,4 @@
-NAME	= AForm
+NAME	= Intern
 
 CXX		= c++
 
@@ -11,6 +11,7 @@ PATH_OBJS = objs/
 SRCS		= main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
+			Intern.cpp \
 			PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp \
 			ShrubberyCreationForm.cpp \
@@ -20,6 +21,7 @@ OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 INCLUDES	= Colors.hpp \
 			Bureaucrat.hpp \
 			AForm.hpp \
+			Intern.hpp \
 			PresidentialPardonForm.hpp \
 			RobotomyRequestForm.hpp \
 			ShrubberyCreationForm.hpp \

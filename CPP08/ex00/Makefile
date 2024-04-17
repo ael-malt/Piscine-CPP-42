@@ -1,4 +1,4 @@
-NAME	= AForm
+NAME	= EasyFind
 
 CXX		= c++
 
@@ -9,25 +9,16 @@ PATH_INCLUDES = includes/
 PATH_OBJS = objs/
 
 SRCS		= main.cpp \
-			Bureaucrat.cpp \
-			AForm.cpp \
-			PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp \
-			ShrubberyCreationForm.cpp \
 
 OBJS		= $(SRCS:%.cpp=$(PATH_OBJS)%.o)
 
 INCLUDES	= Colors.hpp \
-			Bureaucrat.hpp \
-			AForm.hpp \
-			PresidentialPardonForm.hpp \
-			RobotomyRequestForm.hpp \
-			ShrubberyCreationForm.hpp \
+			EasyFind.hpp \
 
 all: $(NAME)
 
 $(NAME): $(PATH_OBJS) $(OBJS) $(addprefix $(PATH_INCLUDES), $(INCLUDES))
-	@$(CXX)  $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo Compilation Complete!
 
 $(OBJS): $(PATH_OBJS)%.o: $(PATH_SRCS)%.cpp $(addprefix $(PATH_INCLUDES), $(INCLUDES))
@@ -37,7 +28,7 @@ $(PATH_OBJS):
 	@mkdir -p $(PATH_OBJS)
 
 clean:
-	@rm -rf $(OBJS) $(PATH_OBJS) ./ShrubForm1_shrubbery ./ShrubForm1_shrubbery_bonus
+	@rm -rf $(OBJS) $(PATH_OBJS)
 
 fclean: clean
 	@rm -rf $(NAME)
