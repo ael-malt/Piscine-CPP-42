@@ -2,14 +2,16 @@
 
 
 int main( void ) {
-	int arr[] = {1, 2, 3, 4, 5, 6, 7};
+	int arr[] = {1, 12, 7, 27, 3, 42, 21};
 
 	std::vector<int> v(arr, arr + sizeof(arr) / sizeof(int));
 	std::deque<int> d(arr, arr + sizeof(arr) / sizeof(int));
 
 	try
 	{
-		cout << 
+		cout << "Element: " << *easyfind(v, 27) << " found in v" << endl;
+
+		cout << "Element: " << *easyfind(d, 5) << " found in d" << endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -17,4 +19,4 @@ int main( void ) {
 	}
 	
 	return 0;
-}poweroff
+}

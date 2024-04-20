@@ -3,15 +3,14 @@
 Base*	generate(void) 
 {
 	srand(time(NULL));
-	int	num = rand() % 4;
-
+	int	num = rand() % 3;
 	switch (num)
 	{
-	case 1:
+	case 0:
 		return (dynamic_cast<Base*>(new A));
-	case 2:
+	case 1:
 		return (dynamic_cast<Base*>(new B));
-	case 3:
+	case 2:
 		return (dynamic_cast<Base*>(new C));
 	}
 	return (new Base);
