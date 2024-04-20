@@ -23,6 +23,7 @@ int	main(void)
 		cout << *ShrubForm1;
 
 		Hamid.executeForm(*ShrubForm1);
+		delete ShrubForm1;
 	}
 	catch(const std::exception& e)
 	{
@@ -44,6 +45,7 @@ int	main(void)
 		cout << *RobForm1;
 
 		Paco.executeForm(*RobForm1);
+		delete RobForm1;
 	}
 	catch(const std::exception& e)
 	{
@@ -65,6 +67,7 @@ int	main(void)
 		cout << *RobForm2;
 
 		Bob.executeForm(*RobForm2);
+		delete RobForm2;
 	}
 	catch(const std::exception& e)
 	{
@@ -86,6 +89,7 @@ int	main(void)
 		cout << *PresForm1;
 
 		Lester.executeForm(*PresForm1);
+		delete PresForm1;
 	}
 	catch(const std::exception& e)
 	{
@@ -101,7 +105,7 @@ int	main(void)
 		cout << James;
 		InternRoboForm = someRandomIntern.makeForm("robotomy request", "RobotomyFormByIntern");
 		James.signForm(*InternRoboForm);
-
+		delete InternRoboForm;
 	}
 	catch(const std::exception& e)
 	{
@@ -121,6 +125,7 @@ int	main(void)
 		cout << *InternPrezForm;
 		Paul.executeForm(*InternPrezForm);
 		cout << *InternPrezForm;
+		delete InternPrezForm;
 	}
 	catch(const std::exception& e)
 	{

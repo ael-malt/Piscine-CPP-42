@@ -21,9 +21,6 @@ class AForm;
 
 class Intern
 {
-private:
-	const string	_name;
-	int				_grade;
 public:
 	Intern();
 	~Intern();
@@ -40,7 +37,5 @@ public:
 	};
 	
 };
-
-ostream&	operator<<(ostream&, const Intern&);
 
 #endif

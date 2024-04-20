@@ -2,7 +2,7 @@ NAME	= Intern
 
 CXX		= c++
 
-CXXFLAGS	= -Werror -Wall -Wextra -std=c++98 -g3
+CXXFLAGS	= -Werror -Wall -Wextra -std=c++98 -g3 -Wno-unused-command-line-argument
 
 PATH_SRCS = srcs/
 PATH_INCLUDES = includes/

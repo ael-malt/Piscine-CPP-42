@@ -56,8 +56,15 @@ void	Bureaucrat::decreaseGrade(){
 
 void Bureaucrat::signForm(AForm &form) {
 	if (form.getSignGrade() < this->_grade)
-		cout << BOLD BROWN << this->_name << DEFAULT RED << " couldn't sign " << MAGENTA << form.getName() << RED " because: " BOLD "grade too low!" DEFAULT << endl;
-	form.beSigned(*this);
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e)
+	{
+		cout << BOLD BROWN << this->_name << DEFAULT RED << " couldn't sign " << MAGENTA << form.getName() << RED " because: " << BOLD << e.what() << DEFAULT << endl;
+	}
+	
 }
 
 void Bureaucrat::executeForm(AForm const &form) {
