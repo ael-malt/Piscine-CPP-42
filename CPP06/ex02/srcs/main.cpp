@@ -56,5 +56,6 @@ int main(void)
 	Base* obj = generate();
 	identify(obj);
 	identify(*obj);
+	delete obj;
 	return 0;
 }
