@@ -9,6 +9,8 @@
 # include <deque>
 # include <algorithm>
 # include <limits.h>
+# include <ctime>
+# include <cmath>
 
 # include "Colors.hpp"
 
