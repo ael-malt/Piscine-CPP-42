@@ -6,7 +6,6 @@
 # include <cstdlib>
 # include <exception>
 # include <vector>
-# include <deque>
 # include <algorithm>
 # include <limits.h>
 # include <ctime>
@@ -35,9 +34,14 @@ public:
 
 	~Span();
 
-	void	addNumber(int number);
-	int		shortestSpan() const;
-	int		longestSpan() const;
+	void				addNumber(int number);
+	void				insert(IT begin, IT end);
+
+	unsigned int					shortestSpan() const;
+	unsigned int					longestSpan() const;
+
+	int					getSize() const;
+	std::vector<int>	getVec() const;
 
 	class TooManyElements: public exception
 	{
@@ -54,6 +58,12 @@ public:
 	};
 };
 
+template <typename T>
+typename T::iterator easyfind(T& container, int nb) {
+	typename T::iterator it = container.begin();
+	for (; it != container.end() && *it != nb ;it++) {}
+		return (it);
+}
 
 
 #endif

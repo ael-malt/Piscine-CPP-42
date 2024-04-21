@@ -1,30 +1,50 @@
 #include "Span.hpp"
 
+#define VECTOR_SIZE 100
 
 int main( void ) {
 	try
 	{
-		Span a(100000);
+		cout << GREEN "My tests:" DEFAULT << endl;
 
-		a.addNumber(1);
+		std::vector<int> tmp_vector(VECTOR_SIZE);
+		Span span_vector(VECTOR_SIZE);
+
 		std::srand(std::time(0));
 
-		for (int i = 1; i < 100; i++)
+		unsigned int nb = 0;
+		for (unsigned int i = 0; i < VECTOR_SIZE; i++)
 		{
-			int nb = abs(((std::rand() % 9991) * pow(i , 2)) / 3);
-			a.addNumber(nb);
-			// cout << nb << endl;
+			nb = abs(((((std::rand() % (VECTOR_SIZE )) + 2) * pow(i * (VECTOR_SIZE - i) , 2)) / 6) );
+			if (nb == static_cast<unsigned int>(*easyfind(tmp_vector, nb)))
+				nb = abs(((((std::rand() % (VECTOR_SIZE )) + 2) * pow(i * (VECTOR_SIZE - i) , 2)) / 6) );
+			if (nb > INT_MAX)
+				nb = nb / 2 - 2;
+
+			tmp_vector.at(i) = nb;
 		}
-		// a.addNumber(900);
-		unsigned int shortestSpan = a.shortestSpan();
-		cout << "shortestSpan: " << shortestSpan << endl;
-		cout << "longestSpan: " << a.longestSpan() << endl;
+		span_vector.insert(tmp_vector.begin(), tmp_vector.end());
+		int shortestSpan = span_vector.shortestSpan();
+		int longestSpan = span_vector.longestSpan();
+		cout << CYAN "shortestSpan: " MAGENTA << shortestSpan << DEFAULT << endl;
+		cout << CYAN "longestSpan: " MAGENTA << longestSpan << DEFAULT << endl;
+
+
+		cout << endl << GREEN "subject tests:" DEFAULT << endl;
+		Span sp = Span(5);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << CYAN "shortestSpan: " MAGENTA << sp.shortestSpan() << DEFAULT << std::endl;
+		std::cout << CYAN "longestSpan: " MAGENTA << sp.longestSpan() << DEFAULT << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	
 	return 0;
 }
+
+

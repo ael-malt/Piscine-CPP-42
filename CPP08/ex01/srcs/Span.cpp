@@ -21,7 +21,13 @@ void	Span::addNumber(int number) {
 	this->_v.push_back(number);
 }
 
-int	Span::shortestSpan() const {
+void	Span::insert(IT begin, IT end) {
+	if(std::distance(begin, end) > this->_size)
+		throw (Span::TooManyElements());
+	this->_v.insert(this->_v.end(), begin, end);
+}
+
+unsigned int	Span::shortestSpan() const {
 	if (this->_size < 2)
 		throw (Span::NotEnoughElements());
 	std::vector<int> cpy = this->_v;
@@ -29,7 +35,6 @@ int	Span::shortestSpan() const {
 		cpy.at(i) = this->_v.at(i);
 
 	std::sort(cpy.begin(), cpy.end());
-
 	IT it = cpy.begin();
 	IT it1 = cpy.begin();
 	it1++;
@@ -37,20 +42,24 @@ int	Span::shortestSpan() const {
 
 	for (; it1 != cpy.end(); it1++, it++)
 	{
-		unsigned int span = static_cast<unsigned int>(*it1 - *it);
+		unsigned int span = abs(*it1 - *it);
 		if (span < shortestSpan)
 			shortestSpan = span;
 	}
 	return(shortestSpan);
 }
 
-int	Span::longestSpan() const {
+unsigned int	Span::longestSpan() const {
 	if (this->_size < 2)
 		throw (Span::NotEnoughElements());
 	
 	int	max = *std::max_element(this->_v.begin(), this->_v.end());
 	int	min = *std::min_element(this->_v.begin(), this->_v.end());
-	unsigned int span = static_cast<unsigned int>(max - min);
+	unsigned int span = abs(max - min);
 	return (span);
 	return (0);
 }
+
+int	Span::getSize() const { return (this->_size); }
+
+std::vector<int>	Span::getVec() const { return (this->_v); }
