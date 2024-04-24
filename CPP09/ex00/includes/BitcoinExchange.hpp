@@ -11,6 +11,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 using std::exception;
 using std::ifstream;
 using std::list;
@@ -23,10 +24,6 @@ private:
 	list<long int> date;
 	short unsigned int index;
 	short unsigned int len;
-	
-	BitcoinExchange();
-	BitcoinExchange(BitcoinExchange& copy);
-	BitcoinExchange& operator=(const BitcoinExchange& copy);
 public:
 	BitcoinExchange(ifstream& myFile);
 	~BitcoinExchange();

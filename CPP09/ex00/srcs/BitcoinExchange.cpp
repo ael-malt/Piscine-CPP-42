@@ -1,17 +1,13 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(ifstream& myFile) {
-	
-}
+BitcoinExchange::BitcoinExchange(ifstream& inFile) {
+	this->index = 0;
 
-BitcoinExchange::BitcoinExchange() {
-
-}
-BitcoinExchange::BitcoinExchange(BitcoinExchange& copy) {
-
-}
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& copy) {
-
+	this->CSV.open("data.csv");
+	if (!this->CSV.is_open()) 
+		throw (BitcoinExchange::FileNotOpen());
+	string line;
+	getline(this->CSV, line);
 }
 
 BitcoinExchange::~BitcoinExchange() {
