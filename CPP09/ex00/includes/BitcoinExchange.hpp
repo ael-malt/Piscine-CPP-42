@@ -1,15 +1,20 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-#include "Colors.hpp"
+# include "Colors.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <exception>
-#include <list>
+# include <iostream>
+# include <fstream>
+# include <exception>
+# include <list>
+# include <algorithm>
+# include <iterator>
+# include <limits.h>
+# include <sstream>
 // #include 
 
 using std::cout;
+using std::cerr;
 using std::endl;
 using std::string;
 using std::exception;
@@ -19,14 +24,19 @@ using std::list;
 class BitcoinExchange
 {
 private:
-	ifstream CSV;
-	list<float> value;
-	list<long int> date;
-	short unsigned int index;
-	short unsigned int len;
+	ifstream _CSV;
+	list<float> _value;
+	list<long int> _date;
 public:
 	BitcoinExchange(ifstream& myFile);
 	~BitcoinExchange();
+
+	void		checkCSV(void);
+	long int	checkDate(string date, string fileName, unsigned int linePos);
+	long int	encode(int year, int month, int day);
+	string		decode(long int date);
+	void		compareFileCSV(ifstream& inFile);
+	float	calculateValXEx(std::list<long int>::iterator dateIt, float value);
 
 	class FileNotGiven : public exception
 	{
@@ -36,6 +46,32 @@ public:
 	class FileNotOpen : public exception
 	{
 		public: const char* what() const throw() { return (RED "Error: Couldn't open file" DEFAULT); }
+	};
+
+	class FileBadValue : public exception
+	{
+		private: string _msg;
+		public: 
+			virtual ~FileBadValue() throw() {}
+			FileBadValue(string file) : _msg(RED "Error: Wrong value found in file: " MAGENTA + file + DEFAULT) {}
+			const char* what() const throw() { return (_msg.c_str()); }
+	};
+	class FileBadDate : public exception
+	{
+		private: string _msg;
+		public: 
+			virtual ~FileBadDate() throw() {}
+			FileBadDate(string file) : _msg(RED "Error: Wrong Date found in file: " MAGENTA + file + DEFAULT) {}
+			const char* what() const throw() { return (_msg.c_str()); }
+
+	};
+
+	class CompFunctor{
+	private:
+		long int	_target;
+	public:
+		CompFunctor(unsigned int target): _target(target){}
+		bool operator()(long int A, long int B) const{ return std::abs(A - _target) < std::abs(B - _target);}
 	};
 };
 
