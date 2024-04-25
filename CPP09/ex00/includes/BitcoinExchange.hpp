@@ -33,8 +33,8 @@ public:
 
 	void		checkCSV(void);
 	long int	checkDate(string date, string fileName, unsigned int linePos);
-	long int	encode(int year, int month, int day);
-	string		decode(long int date);
+	long int	encodeDate(int year, int month, int day);
+	string		decodeDate(long int date);
 	void		compareFileCSV(ifstream& inFile);
 	float	calculateValXEx(std::list<long int>::iterator dateIt, float value);
 
@@ -56,12 +56,13 @@ public:
 			FileBadValue(string file) : _msg(RED "Error: Wrong value found in file: " MAGENTA + file + DEFAULT) {}
 			const char* what() const throw() { return (_msg.c_str()); }
 	};
-	class FileBadDate : public exception
+
+	class FileImpossibleDate : public exception
 	{
 		private: string _msg;
 		public: 
-			virtual ~FileBadDate() throw() {}
-			FileBadDate(string file) : _msg(RED "Error: Wrong Date found in file: " MAGENTA + file + DEFAULT) {}
+			virtual ~FileImpossibleDate() throw() {}
+			FileImpossibleDate(string file, string date) : _msg(RED "Error: Impossible Date found in file: " MAGENTA + file + RED + " => " + ORANGE + date + DEFAULT) {}
 			const char* what() const throw() { return (_msg.c_str()); }
 
 	};

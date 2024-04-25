@@ -5,7 +5,7 @@ BitcoinExchange::BitcoinExchange(ifstream& inFile) {
 	if (!this->_CSV.is_open()) 
 		throw (BitcoinExchange::FileNotOpen());
 	checkCSV();
-	// decode(*this->_date.begin());
+	// decodeDate(*this->_date.begin());
 	compareFileCSV(inFile);
 }
 
@@ -27,7 +27,7 @@ void BitcoinExchange::compareFileCSV(ifstream& inFile) {
 	{
 		getline(inFile, line);
 		fileDate = string(line.substr(0, line.find_first_of('|')));
-		date = checkDate(fileDate, "inputFile", linePos);
+		date = checkDate(fileDate, "Input File", linePos);
 		if (line[0] && (date != 0)) {
 			if ((it = std::find(this->_date.begin(), this->_date.end(), date)) == this->_date.end())
 				it = std::min_element(this->_date.begin(), this->_date.end(), CompFunctor(date));
@@ -46,9 +46,9 @@ void BitcoinExchange::compareFileCSV(ifstream& inFile) {
 		linePos++;
 	}
 }
-long int	BitcoinExchange::encode(int year, int month, int day) { return ((year * 10000) + (month * 100) + day); }
+long int	BitcoinExchange::encodeDate(int year, int month, int day) { return ((year * 10000) + (month * 100) + day); }
 
-string	BitcoinExchange::decode(long int date) {
+string	BitcoinExchange::decodeDate(long int date) {
 	string fullDate;
 	std::stringstream out;
 
@@ -79,24 +79,25 @@ long int	BitcoinExchange::checkDate(string date, string fileName, unsigned int l
 
 	if ( year < 0 || month < 0 || month > 12 || day < 0 || day > 31 ) {
 		if (!fileName.compare("data.csv"))
-			throw(BitcoinExchange::FileBadDate("data.csv"));
+			throw(BitcoinExchange::FileImpossibleDate("data.csv", date));
 		else if (!linePos)
 			return (0);
 		else
-			cerr << RED "Error: bad input => " MAGENTA << date << DEFAULT << endl;
+			throw(BitcoinExchange::FileImpossibleDate(fileName, date));
 	}
-	if ((month == 2 && day > 29 && !(year % 4)) || ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)) {
+	
+	if ((month == 2 && day >= 29 && (year % 4)) || ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)) {
 		if (!fileName.compare("data.csv"))
-			throw(BitcoinExchange::FileBadDate("data.csv"));
+			throw(BitcoinExchange::FileImpossibleDate("data.csv", date));
 		else if (!linePos)
 			return (0);
 		else
-			cerr << RED "Error: bad input => " MAGENTA << date << DEFAULT << endl;
+			throw(BitcoinExchange::FileImpossibleDate(fileName, date));
 	}
 
 	if (!fileName.compare("data.csv"))
-		this->_date.push_back(BitcoinExchange::encode(year, month, day));
-	return (BitcoinExchange::encode(year, month, day));
+		this->_date.push_back(BitcoinExchange::encodeDate(year, month, day));
+	return (BitcoinExchange::encodeDate(year, month, day));
 }
 
 void	BitcoinExchange::checkCSV(void) {
