@@ -50,6 +50,7 @@
 		"*.tpp": "cpp",
 		"ctime": "cpp",
 		"stack": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"sstream": "cpp"
 	}
 }
