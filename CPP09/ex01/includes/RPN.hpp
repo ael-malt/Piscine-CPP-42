@@ -121,36 +121,4 @@ public:
 	};
 };
 
-class BitcoinExchange
-{
-	class FileBadValue : public exception
-	{
-		private: string _msg;
-		public: 
-			virtual ~FileBadValue() throw() {}
-			FileBadValue(string file) : _msg(RED "Error: Wrong value found in file: " MAGENTA + file + DEFAULT) {}
-			const char* what() const throw() { return (_msg.c_str()); }
-	};
-
-	class FileImpossibleDate : public exception
-	{
-		private: string _msg;
-		public: 
-			virtual ~FileImpossibleDate() throw() {}
-			FileImpossibleDate(string file, string date) : _msg(RED "Error: Impossible Date found in file: " MAGENTA + file + RED + " => " + ORANGE + date + DEFAULT) {}
-			const char* what() const throw() { return (_msg.c_str()); }
-
-	};
-
-	class CompFunctor{
-	private:
-		long int	_target;
-	public:
-		CompFunctor(unsigned int target): _target(target){}
-		bool operator()(long int A, long int B) const{ return std::abs(A - _target) < std::abs(B - _target);}
-	};
-};
-
-
-
 #endif
