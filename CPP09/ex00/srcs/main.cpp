@@ -8,11 +8,10 @@ int main(int argc, char const *argv[])
 			throw (BitcoinExchange::FileNotGiven());
 
 		ifstream inFile;
-
 		inFile.open(argv[1]);
 		if (!inFile.is_open()) 
 			throw (BitcoinExchange::FileNotOpen());
-		
+
 		BitcoinExchange start(inFile);
 		inFile.close();
 	}

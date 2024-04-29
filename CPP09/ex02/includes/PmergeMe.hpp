@@ -44,18 +44,9 @@ public:
 	void	ParseArgv(int argc, char const **argv);
 	template <typename T>
 	void	sort(T& container);
-	double	getElapsedTimeMs(timeval startTime, timeval endTime);
 	void	sortPairs(pairVector& pairs, pairVector::iterator current);
 	template <typename T>
-	void	T_swap(T& first, T&second);
-	template <typename T>
 	void	binarySearchSort(T& container, pairVector pairs, typename T::iterator last);
-
-
-
-
-
-
 
 	class GetTimeError : public exception {
 		public: virtual const char* what() const throw() { return (RED "Error: gettimeofday() has failed." DEFAULT); }
@@ -74,5 +65,13 @@ public:
 	};
 };
 
-
+double	getElapsedTimeMs(timeval startTime, timeval endTime);
+template <typename T>
+	void	T_swap(T& first, T&second);
+template <typename T, typename TIterator>
+	static void assignContainerRange(TIterator start, TIterator end, T& dst);
+template <typename T>
+	static size_t getItPos(T type, typename T::iterator it);
+template <typename T, typename val>
+	static void ft_emplace(T& container, unsigned int pos, val value);
 #endif

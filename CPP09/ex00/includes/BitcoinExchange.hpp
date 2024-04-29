@@ -33,10 +33,11 @@ public:
 
 	void		checkCSV(void);
 	long int	checkDate(string date, string fileName, unsigned int linePos);
+	int			getIntLen(int number);
 	long int	encodeDate(int year, int month, int day);
 	string		decodeDate(long int date);
 	void		compareFileCSV(ifstream& inFile);
-	float	calculateValXEx(std::list<long int>::iterator dateIt, float value);
+	float		calculateValXEx(std::list<long int>::iterator dateIt, float value);
 
 	class FileNotGiven : public exception
 	{

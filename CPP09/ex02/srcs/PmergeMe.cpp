@@ -1,16 +1,19 @@
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe(int argc, char const **argv) {
-	// Get start time
-	if (gettimeofday(&this->_startValue, NULL) == -1) throw (PmergeMe::GetTimeError());
 	// Parse all the arguments
 	ParseArgv(argc, argv);
+
+	// Get start time
+	if (gettimeofday(&this->_startValue, NULL) == -1) throw (PmergeMe::GetTimeError());
 
 	// Sort _vector
 	sort(this->_vector);
 	if (gettimeofday(&this->_endValue, NULL) == -1) throw (PmergeMe::GetTimeError());
 	// Calculate the time it took
 	this->_vectorTime = getElapsedTimeMs(this->_startValue, this->_endValue);
+
+	if (gettimeofday(&this->_startValue, NULL) == -1) throw (PmergeMe::GetTimeError());
 
 	// Sort _deque
 	sort(this->_deque);
@@ -39,12 +42,6 @@ PmergeMe::PmergeMe(int argc, char const **argv) {
 	cout << "Time to process a range of " << argc << " elements with std::deque : " << this->_dequeTime << endl;
 }
 
-double PmergeMe::getElapsedTimeMs(timeval startTime, timeval endTime) {
-	long seconds = endTime.tv_sec - startTime.tv_sec;
-	long microSeconds = endTime.tv_usec - startTime.tv_usec;
-	return (seconds + microSeconds*1e-6);
-}
-
 template <typename T>
 void PmergeMe::binarySearchSort(T& container, pairVector pairs, typename T::iterator last) {
 	T	pend;
@@ -64,22 +61,17 @@ void PmergeMe::binarySearchSort(T& container, pairVector pairs, typename T::iter
 		range = mainChain;
 		middle = range.begin() + static_cast<unsigned int>(range.size() / 2);
 		while(range.size() > 2) {
-			typename T::iterator limit = mid + 1;
-			(*mid <= *pend.begin() ? limit)
+			typename T::iterator limit = middle + 1;
+			(*middle <= *pend.begin() ? limit = range.end() : middle = range.begin());
+			assignContainerRange(middle, limit, range);
+			middle = range.begin() + static_cast<unsigned int>(range.size() / 2);
 		}
-		
+		*range.begin() > *pend.begin() ? middle = range.begin() : middle = range.end() - 1;
+		ft_emplace(mainChain, getItPos(mainChain, middle), *pend.begin());
 	}
-	
-
-	
+	assignContainerRange(mainChain.begin(), mainChain.end(), container);
 }
-template <typename T>
-void PmergeMe::T_swap(T& first, T&second) {
-	T tmp = first;
-	first = second;
-	second = tmp;
 
-}
 void PmergeMe::sortPairs(pairVector& pairs, pairVector::iterator current) {
 	if (current != pairs.end())
 	{
@@ -98,14 +90,14 @@ void PmergeMe::sort(T& container) {
 	pairVector pairs;
 	typename T::iterator last = container.end();
 	if (container.size() % 2) last--;
-	for (typename T::iterator it = container.begin(); it != container.end();)
+	for (typename T::iterator It = container.begin(); It != container.end();)
 	{
-		if (it != last) {
-			pairs.push_back(std::make_pair(*it, *(it + 1)));
-			it += 2;
+		if (It != last) {
+			pairs.push_back(std::make_pair(*It, *(It + 1)));
+			It += 2;
 		}
 		else
-			it++;
+			It++;
 	}
 	// Then sort the pairs putting the biggest of 
 	sortPairs(pairs, pairs.begin());
@@ -127,3 +119,57 @@ void PmergeMe::ParseArgv(int argc, char const **argv) {
 }
 
 PmergeMe::~PmergeMe() {}
+
+
+// Utils
+
+
+double getElapsedTimeMs(timeval startTime, timeval endTime) {
+	long seconds = endTime.tv_sec - startTime.tv_sec;
+	long microSeconds = endTime.tv_usec - startTime.tv_usec;
+	return (seconds + microSeconds*1e-6);
+}
+
+template <typename T, typename val>
+static void ft_emplace(T& container, unsigned int pos, val value) {
+	T tmpContainer;
+	for (typename T::iterator It = container.begin(); It != container.end(); It++)
+	{
+		if (getItPos(container, It) == pos) {
+			tmpContainer.push_back(value);
+			for (typename T::iterator tmpIt = It; tmpIt != container.end(); tmpIt++)
+			{
+				tmpContainer.push_back(*tmpIt);
+				if (It != container.end() - 1)
+					It++;
+			}
+		}
+		else
+			tmpContainer.push_back(*It);
+	}
+	container.clear();
+	assignContainerRange(tmpContainer.begin(), tmpContainer.end(), container);
+	
+}
+template <typename T>
+void T_swap(T& first, T&second) {
+	T tmp = first;
+	first = second;
+	second = tmp;
+}
+
+template <typename T>
+static size_t getItPos(T container, typename T::iterator It) {
+	size_t i = 0;
+	for (typename T::iterator typeIt = container.begin(); *typeIt != *It ; typeIt++, i++) {}
+	return (i);
+}
+
+//Assign a range of iterators of a container to another container
+template <typename T, typename TIterator>
+static void assignContainerRange(TIterator start, TIterator end, T& dst) {
+	T src = T(start, end);
+	dst.clear();
+	for (typename T::iterator It = src.begin(); It != src.end(); It++)
+		dst.push_back(*It);
+}

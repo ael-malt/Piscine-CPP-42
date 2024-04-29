@@ -22,13 +22,18 @@ void BitcoinExchange::compareFileCSV(ifstream& inFile) {
 	float value;
 	long int date;
 	std::list<long int>::iterator it;
-
+	string charSet = "0123456789|.- ";
 	while(inFile && !inFile.eof())
 	{
 		getline(inFile, line);
 		fileDate = string(line.substr(0, line.find_first_of('|')));
 		date = checkDate(fileDate, "Input File", linePos);
 		if (line[0] && (date != 0)) {
+			// if (linePos > 0 && line.find_first_not_of(charSet) != string::npos)
+			// {
+			// 	cout << line << endl;
+			// 	throw (BitcoinExchange::FileBadValue("inFile"));
+			// }
 			if ((it = std::find(this->_date.begin(), this->_date.end(), date)) == this->_date.end())
 				it = std::min_element(this->_date.begin(), this->_date.end(), CompFunctor(date));
 
@@ -70,14 +75,24 @@ string	BitcoinExchange::decodeDate(long int date) {
 	return (fullDate);
 }
 
+int	BitcoinExchange::getIntLen(int number)
+{
+	int counter = 0;
+	while(number)
+	{
+		number = number / 10;
+		counter++;
+	}
+	return (counter);
+}
 
 long int	BitcoinExchange::checkDate(string date, string fileName, unsigned int linePos) {
 	int day, month, year = 0;
 	year = atoi(date.substr(0, date.find_first_of('-')).c_str());
 	month = atoi(date.substr(date.find_first_of('-') + 1, date.find_last_of('-')).c_str());
 	day = atoi(date.substr(date.find_last_of('-') + 1, date.length()).c_str());
-
-	if ( year < 0 || month < 0 || month > 12 || day < 0 || day > 31 ) {
+	
+	if ( year < 0 || year >= 10000 || month < 0 || month > 12 || day < 0 || day > 31 ) {
 		if (!fileName.compare("data.csv"))
 			throw(BitcoinExchange::FileImpossibleDate("data.csv", date));
 		else if (!linePos)
@@ -104,12 +119,14 @@ void	BitcoinExchange::checkCSV(void) {
 	string line;
 	unsigned int linePos = 0;
 	float value;
-
+	string charSet = "0123456789,.-";
 	getline(this->_CSV, line);
 	while (this->_CSV)
 	{
 		getline(this->_CSV, line);
-		if (line[0]) {
+		if (!line.empty() && line[0]) {
+			if (linePos > 0 && line.find_first_not_of(charSet) != string::npos)
+				throw (BitcoinExchange::FileBadValue("data.csv"));
 			checkDate(line.substr(0, line.find_first_of(',')), "data.csv", linePos);
 			line = line.substr(line.find_first_of(',') + 1, line.length());
 			if (!line[0] || line[0] == ' ')
